@@ -14,6 +14,7 @@ public class Tournament {
     public Tournament(String name) {
         this.name = name;
         this.possibleEvents.add(SingleElimEvent.class);
+        this.possibleEvents.add(RoundRobinEvent.class);
     }
 
     public Map<String, User> getPlayers() {

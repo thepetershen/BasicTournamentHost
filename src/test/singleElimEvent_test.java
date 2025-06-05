@@ -14,7 +14,7 @@ import main.Match;
 import main.SingleElimEvent;
 import main.Tournament; 
 
-public class tournament_test {
+public class singleElimEvent_test {
     private Tournament tournament;
     private ArrayList<User> testPlayers;
     

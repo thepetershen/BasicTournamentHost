@@ -19,7 +19,7 @@ public class SingleElimEvent implements Event {
     private boolean eventEnded;
 
     private Match head;
-
+    
     public SingleElimEvent(String name) {
         this.name = name;
         eventBegan = false;
