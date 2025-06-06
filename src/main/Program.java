@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 /* 
  * This main program is written entirely by Copilot, no code from this class will be used in the eventual program as this is simply meant to 
@@ -25,7 +26,8 @@ public class Program {
             System.out.println("4. Print Draw");
             System.out.println("5. Set Match Winner");
             System.out.println("6. View All Players");
-            System.out.println("7. Exit");
+            System.out.println("7. Viwer player matches");
+            System.out.println("8. Exit");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -114,12 +116,41 @@ public class Program {
                         System.out.println(user.getName());
                     }
                     break;
+                case 7:
+                    System.out.print("Enter player's name: ");
+                    String playerName = scanner.nextLine();
+                    User player = tournament.getPlayers().get(playerName);
+                    if (player == null) {
+                        System.out.println("Player not found.");
+                        break;
+                    }
 
-                case 7: // Exit
+                    // Display all matches grouped by tournament
+                    System.out.println("All Matches for " + player.getName() + ":");
+                    Map<Tournament, ArrayList<Match>> allMatches = player.getAllMatches();
+                    for (Map.Entry<Tournament, ArrayList<Match>> entry : allMatches.entrySet()) {
+                        System.out.println("Tournament: " + entry.getKey().getName());
+                        for (Match match1 : entry.getValue()) {
+                            System.out.println("  Match: " + match1.toString());
+                        }
+                    }           
+
+                    // Display current matches
+                    System.out.println("\nCurrent Matches for " + player.getName() + ":");
+                    ArrayList<Match> curMatches1 = tournament.getCurMatchesForUser(player);
+                    if (curMatches1.isEmpty()) {
+                        System.out.println("No current matches.");
+                    } else {
+                        for (Match match1 : curMatches1) {
+                            System.out.println("  Match: " + match1.toString());
+                        }
+                    }
+                    break;
+                case 8: // Exit
                     System.out.println("Exiting Tournament Manager. Goodbye!");
                     scanner.close();
                     return;
-
+                
                 default:
                     System.out.println("Invalid option. Please try again.");
             }

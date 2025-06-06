@@ -33,8 +33,12 @@ public class Tournament {
     }
 
     public void addPlayer(String eventName, User player) {
-        if(allEvents.keySet().contains(eventName)) allEvents.get(eventName).addPlayer(player);
-        else System.out.println("no such event");
+        if(allEvents.keySet().contains(eventName)) {
+            allEvents.get(eventName).addPlayer(player);
+            player.addTournament(this);
+        }else {
+            System.out.println("no such event");
+        }
     }
 
     public void addPlayer(String eventName, ArrayList<User> toAdd) {
@@ -107,6 +111,20 @@ public class Tournament {
         if (allEvents.get(eventName) != null) allEvents.get(eventName).printDraw();
     }
 
+    public ArrayList<Match> getAllMatchesForUser(User user) {
+        ArrayList<Match> answer = new ArrayList<>();
+        for(Match x: this.getAllMatches()){
+            if(x.contains(user)) answer.add(x);
+        }
+        return answer;
+    }
 
+    public ArrayList<Match> getCurMatchesForUser(User user) {
+        ArrayList<Match> answer = new ArrayList<>();
+        for(Match x: this.getCurMatches()){
+            if(x.contains(user)) answer.add(x);
+        }
+        return answer;
+    }
     
 }

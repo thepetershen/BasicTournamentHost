@@ -41,6 +41,7 @@ public class singleElimEvent_test {
     public void test_addPlayersToTournament() {
         assertEquals(tournament.getPlayers().get("Alice").getName(), "Alice");
         assertEquals(tournament.getPlayers().get("Bob").getName(), "Bob");
+        assertEquals(tournament.getPlayers().get("Alice").getTournament().get(0), tournament);
     }
 
     @Test 

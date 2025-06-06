@@ -62,7 +62,18 @@ public class Match {
     }
 
     public String toString() {
+        if (player1 == null&& player2 == null) {
+            return "Neither players of this match has been decided yet";
+        } else if (player1 == null) {
+            return "Undecided" + " v. " + player2.getName();
+        }else if (player2 == null) {
+            return player1.getName() + " v. " + "Undecided";
+        }
         return player1.getName() + " v. " + player2.getName();
     }
     
+    public boolean contains(User user) {
+        if (player1 == user || player2 == user) return true;
+        return false;
+    }
 }
