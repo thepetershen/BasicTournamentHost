@@ -87,7 +87,7 @@ public class singleElimEvent_test {
         Tournament tournament7 = new Tournament(null);
         tournament7.createEvent(SingleElimEvent.class, "MS");
         for (int i = 0; i < 65000; i++) {
-            tournament7.addPlayer("MS", new User("Peter" + i, null));
+            tournament7.addPlayer("MS", new User("P" + i, null));
         }
         tournament7.createDraw("MS");
         assertEquals(tournament7.getAllMatches().size(), 65535);
